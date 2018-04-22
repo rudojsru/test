@@ -12,6 +12,7 @@ public class Test {
 //        }
 
         System.out.println(a.substring(1));
+              System.out.println("");
 
 
     }
