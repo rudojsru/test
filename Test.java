@@ -14,7 +14,7 @@ public class Test {
         System.out.println(a.substring(1));
               System.out.println("");
 System.out.println("");
-System.out.println("");
+System.out.println("13:03");
 
 
     }
