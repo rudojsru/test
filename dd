@@ -1,0 +1,60 @@
+package sample;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+
+import java.awt.*;
+
+public class Controller {
+    @FXML
+    private TextField textField1;
+
+    String operator = "";
+    Model model = new Model();
+
+    private long numer;
+    private boolean start = true;
+
+    public void numbers(ActionEvent evt) {
+        if (start) {
+            textField1.setText("");
+            String num = ((Button) evt.getSource()).getText();
+            textField1.setText(textField1.getText() + num);
+            start = false;
+        } else {
+            String num = ((Button) evt.getSource()).getText();
+            textField1.setText(textField1.getText() + num);
+        }
+    }
+
+    public void operator(ActionEvent evt) {
+        String value = ((Button) evt.getSource()).getText();
+        if (!"=".equals(value)) {
+            System.out.println("111");
+          //  if (!value.isEmpty()) return;
+            numer = Long.parseLong(textField1.getText());
+            operator = value;
+            System.out.println("222");
+            textField1.setText(value);
+            start=true;
+        }else {
+            if(operator.isEmpty())return;
+            numer=(model.operation(numer, Long.parseLong(textField1.getText()),operator));
+            textField1.setText(String.valueOf(numer));
+
+        }
+    }
+
+
+    public void  alltoZero(ActionEvent event){
+        numer=0;
+        operator="";
+        textField1.setText("0");
+
+    }
+
+
+}
